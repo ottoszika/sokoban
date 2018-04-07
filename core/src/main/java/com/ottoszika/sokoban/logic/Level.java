@@ -1,5 +1,6 @@
 package com.ottoszika.sokoban.logic;
 
+import com.ottoszika.sokoban.contracts.Collidable;
 import com.ottoszika.sokoban.entities.GameEntity;
 import com.ottoszika.sokoban.utils.Direction;
 import com.ottoszika.sokoban.utils.Position;
@@ -19,10 +20,22 @@ public class Level {
     private Map<Position, Set<GameEntity>> map;
 
     /**
+     * Level width.
+     */
+    private int width;
+
+    /**
+     * Level height.
+     */
+    private int height;
+
+    /**
      * Level constructor.
      */
-    public Level() {
+    public Level(int width, int height) {
         map = new HashMap<Position, Set<GameEntity>>();
+        this.width = width;
+        this.height = height;
     }
 
     /**
@@ -173,5 +186,85 @@ public class Level {
      */
     public void setMap(Map<Position, Set<GameEntity>> map) {
         this.map = map;
+    }
+
+    /**
+     * Get level width.
+     *
+     * @return the level width.
+     */
+    public int getWidth() {
+        return width;
+    }
+
+    /**
+     * Set level width.
+     *
+     * @param width the level width to be set.
+     */
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    /**
+     * Get level height.
+     *
+     * @return the level height.
+     */
+    public int getHeight() {
+        return height;
+    }
+
+    /**
+     * Set level height.
+     *
+     * @param height the level height to be set.
+     */
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    /**
+     * Get the string representation of the level.
+     *
+     * @return the string representation.
+     */
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                Set<GameEntity> entities = getEntitiesByPosition(new Position(j ,i));
+
+                // If there are not entities at the selected position
+                // we well represent that with a space.
+                if (entities == null) {
+                    stringBuilder.append(' ');
+                    continue;
+                }
+
+                // Dominant entity will be the first from the set
+                GameEntity dominantEntity = entities.isEmpty() ? null : entities.iterator().next();
+
+                // Collidable entities have higher priority
+                // so we will search for them in the set
+                for (GameEntity entity : entities) {
+                    if (entity instanceof Collidable) {
+                        dominantEntity = entity;
+                        break;
+                    }
+                }
+
+                // Append to the builder the first letter of the class name
+                if (dominantEntity != null) {
+                    stringBuilder.append(dominantEntity.getClass().getSimpleName().charAt(0));
+                }
+            }
+
+            stringBuilder.append('\n');
+        }
+
+        return stringBuilder.toString();
     }
 }

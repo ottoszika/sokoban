@@ -17,7 +17,7 @@ public class LevelManagerTest {
 
     @Before
     public void setUp() {
-        level = new Level();
+        level = new Level(8, 6);
 
         /*
         BBBBBBBB
@@ -93,5 +93,10 @@ public class LevelManagerTest {
         assertTrue(levelManager.move(player, Direction.DOWN));
         assertTrue(levelManager.move(player, Direction.DOWN));
         assertFalse(levelManager.move(player, Direction.DOWN));
+    }
+
+    @Test
+    public void testToString() {
+        System.out.println(level.toString());
     }
 }

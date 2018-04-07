@@ -1,6 +1,9 @@
 package com.ottoszika.sokoban.logic;
 
+import com.ottoszika.sokoban.entities.Block;
+import com.ottoszika.sokoban.entities.Crate;
 import com.ottoszika.sokoban.entities.GameEntity;
+import com.ottoszika.sokoban.entities.Player;
 import com.ottoszika.sokoban.utils.Direction;
 import com.ottoszika.sokoban.utils.Position;
 import org.junit.Test;
@@ -17,7 +20,7 @@ public class LevelTest {
     @Test
     public void testGetEntititesByPosition() {
         GameEntity gameEntity = mock(GameEntity.class);
-        Level level = new Level();
+        Level level = new Level(4, 5);
 
         Set<GameEntity> gameEntitySet = new HashSet<>();
         gameEntitySet.add(gameEntity);
@@ -44,7 +47,7 @@ public class LevelTest {
         Set<GameEntity> gameEntityUpSet = new HashSet<>();
         Set<GameEntity> gameEntityDownSet = new HashSet<>();
 
-        Level level = new Level();
+        Level level = new Level(4, 5);
         level.getMap().put(new Position(2, 1), gameEntitySet);
         level.getMap().put(new Position(1, 1), gameEntityLeftSet);
         level.getMap().put(new Position(3, 1), gameEntityRightSet);
@@ -59,7 +62,7 @@ public class LevelTest {
 
     @Test
     public void testExists() {
-        Level level = new Level();
+        Level level = new Level(4, 5);
 
         level.getMap().put(new Position(2, 1), new HashSet<GameEntity>());
 
@@ -69,7 +72,7 @@ public class LevelTest {
 
     @Test
     public void testClear() {
-        Level level = new Level();
+        Level level = new Level(4, 5);
 
         level.getMap().put(new Position(2, 1), new HashSet<GameEntity>());
         level.getMap().put(new Position(2, 3), new HashSet<GameEntity>());
@@ -94,7 +97,7 @@ public class LevelTest {
         GameEntity gameEntityOne = mock(GameEntity.class);
         GameEntity gameEntityTwo = mock(GameEntity.class);
 
-        Level level = new Level();
+        Level level = new Level(4, 5);
 
         Position position = new Position(2, 1);
 
@@ -126,7 +129,7 @@ public class LevelTest {
         when(gameEntityTwo.getPosition()).thenReturn(new Position(2, 1));
         when(gameEntityThree.getPosition()).thenReturn(new Position(2, 3));
 
-        Level level = new Level();
+        Level level = new Level(4, 5);
 
         Set<GameEntity> gameEntitiesOne = new HashSet<>();
         Set<GameEntity> gameEntitiesTwo = new HashSet<>();
@@ -152,5 +155,53 @@ public class LevelTest {
         assertEquals(2, level.getMap().size());
         assertEquals(0, level.getMap().get(new Position(2, 1)).size());
         assertEquals(0, level.getMap().get(new Position(2, 3)).size());
+    }
+
+    @Test
+    public void testToString() {
+        Level level = new Level(7, 5);
+
+        for (int i = 0; i < 7; i++) {
+            Block blocksUp = new Block();
+            blocksUp.setPosition(new Position(i, 0));
+            level.add(blocksUp);
+
+            Block blocksDown = new Block();
+            blocksDown.setPosition(new Position(i, 4));
+            level.add(blocksDown);
+        }
+
+        for (int i = 1; i < 5; i++) {
+            Block blocksLeft = new Block();
+            blocksLeft.setPosition(new Position(0, i));
+            level.add(blocksLeft);
+
+            Block blocksRight = new Block();
+            blocksRight.setPosition(new Position(6, i));
+            level.add(blocksRight);
+        }
+
+        Crate crateOne = new Crate();
+        Crate crateTwo = new Crate();
+        Crate crateThree = new Crate();
+        Crate crateFour = new Crate();
+
+        crateOne.setPosition(new Position(2, 1));
+        crateTwo.setPosition(new Position(5, 1));
+        crateThree.setPosition(new Position(3, 2));
+        crateFour.setPosition(new Position(3, 3));
+
+        level.add(crateOne);
+        level.add(crateTwo);
+        level.add(crateThree);
+        level.add(crateFour);
+
+        Player player = new Player();
+        player.setPosition(new Position(3, 1));
+
+        level.add(player);
+
+        assertEquals("BBBBBBB\nB CP CB\nB  C  B\nB  C  B\nBBBBBBB\n", level.toString());
+
     }
 }
