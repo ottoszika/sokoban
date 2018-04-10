@@ -120,12 +120,12 @@ public class Level {
      * @param entity the entity to be added.
      */
     public void add(GameEntity entity) {
-        if (exists(entity.getPosition())) {
-            map.get(entity.getPosition()).add(entity);
+        if (exists(entity.getGridPosition())) {
+            map.get(entity.getGridPosition()).add(entity);
         } else {
             Set<GameEntity> gameEntitySet = new HashSet<GameEntity>();
             gameEntitySet.add(entity);
-            map.put(entity.getPosition(), gameEntitySet);
+            map.put(entity.getGridPosition(), gameEntitySet);
         }
     }
 
@@ -135,8 +135,8 @@ public class Level {
      * @param entity the entity to be removed.
      */
     public void remove(GameEntity entity) {
-        if (exists(entity.getPosition())) {
-            this.map.get(entity.getPosition()).remove(entity);
+        if (exists(entity.getGridPosition())) {
+            this.map.get(entity.getGridPosition()).remove(entity);
         }
     }
 
@@ -148,12 +148,12 @@ public class Level {
      * @return the movement success.
      */
     public boolean move(GameEntity entity, Position position) {
-        if (!exists(entity.getPosition())) {
+        if (!exists(entity.getGridPosition())) {
             return false;
         }
 
         remove(entity);
-        entity.setPosition(position);
+        entity.setGridPosition(position);
         add(entity);
 
         return true;
@@ -167,7 +167,7 @@ public class Level {
      * @return the movement success.
      */
     public boolean move(GameEntity entity, Direction direction) {
-        return move(entity, getNearbyPosition(entity.getPosition(), direction));
+        return move(entity, getNearbyPosition(entity.getGridPosition(), direction));
     }
 
     /**

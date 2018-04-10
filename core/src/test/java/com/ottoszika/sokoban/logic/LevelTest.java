@@ -101,7 +101,7 @@ public class LevelTest {
 
         Position position = new Position(2, 1);
 
-        when(gameEntityOne.getPosition()).thenReturn(position);
+        when(gameEntityOne.getGridPosition()).thenReturn(position);
         level.add(gameEntityOne);
 
         assertEquals(1, level.getMap().size());
@@ -109,7 +109,7 @@ public class LevelTest {
         assertEquals(1, level.getMap().get(position).size());
         assertTrue(level.getMap().get(position).contains(gameEntityOne));
 
-        when(gameEntityTwo.getPosition()).thenReturn(position);
+        when(gameEntityTwo.getGridPosition()).thenReturn(position);
         level.add(gameEntityTwo);
 
         assertEquals(1, level.getMap().size());
@@ -125,9 +125,9 @@ public class LevelTest {
         GameEntity gameEntityTwo = mock(GameEntity.class);
         GameEntity gameEntityThree = mock(GameEntity.class);
 
-        when(gameEntityOne.getPosition()).thenReturn(new Position(2, 1));
-        when(gameEntityTwo.getPosition()).thenReturn(new Position(2, 1));
-        when(gameEntityThree.getPosition()).thenReturn(new Position(2, 3));
+        when(gameEntityOne.getGridPosition()).thenReturn(new Position(2, 1));
+        when(gameEntityTwo.getGridPosition()).thenReturn(new Position(2, 1));
+        when(gameEntityThree.getGridPosition()).thenReturn(new Position(2, 3));
 
         Level level = new Level(4, 5);
 
@@ -163,21 +163,21 @@ public class LevelTest {
 
         for (int i = 0; i < 7; i++) {
             Block blocksUp = new Block();
-            blocksUp.setPosition(new Position(i, 0));
+            blocksUp.setGridPosition(new Position(i, 0));
             level.add(blocksUp);
 
             Block blocksDown = new Block();
-            blocksDown.setPosition(new Position(i, 4));
+            blocksDown.setGridPosition(new Position(i, 4));
             level.add(blocksDown);
         }
 
         for (int i = 1; i < 5; i++) {
             Block blocksLeft = new Block();
-            blocksLeft.setPosition(new Position(0, i));
+            blocksLeft.setGridPosition(new Position(0, i));
             level.add(blocksLeft);
 
             Block blocksRight = new Block();
-            blocksRight.setPosition(new Position(6, i));
+            blocksRight.setGridPosition(new Position(6, i));
             level.add(blocksRight);
         }
 
@@ -186,10 +186,10 @@ public class LevelTest {
         Crate crateThree = new Crate();
         Crate crateFour = new Crate();
 
-        crateOne.setPosition(new Position(2, 1));
-        crateTwo.setPosition(new Position(5, 1));
-        crateThree.setPosition(new Position(3, 2));
-        crateFour.setPosition(new Position(3, 3));
+        crateOne.setGridPosition(new Position(2, 1));
+        crateTwo.setGridPosition(new Position(5, 1));
+        crateThree.setGridPosition(new Position(3, 2));
+        crateFour.setGridPosition(new Position(3, 3));
 
         level.add(crateOne);
         level.add(crateTwo);
@@ -197,7 +197,7 @@ public class LevelTest {
         level.add(crateFour);
 
         Player player = new Player();
-        player.setPosition(new Position(3, 1));
+        player.setGridPosition(new Position(3, 1));
 
         level.add(player);
 

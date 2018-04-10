@@ -1,0 +1,126 @@
+{
+  "width": 5,
+  "height": 5,
+  "gameEntityDefinitions": [
+    {
+      "type": "block",
+      "x": 0,
+      "y": 0,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
+      "x": 1,
+      "y": 0,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
+      "x": 2,
+      "y": 0,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
+      "x": 3,
+      "y": 0,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
+      "x": 4,
+      "y": 0,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
+      "x": 0,
+      "y": 4,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
+      "x": 1,
+      "y": 4,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
+      "x": 2,
+      "y": 4,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
+      "x": 3,
+      "y": 4,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
+      "x": 4,
+      "y": 4,
+      "regionName": "block_04"
+    },
+    {
+      "type": "ground",
+      "x": 0,
+      "y": 0,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 1,
+      "y": 0,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 2,
+      "y": 0,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 3,
+      "y": 0,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 4,
+      "y": 0,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 0,
+      "y": 4,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 1,
+      "y": 4,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 2,
+      "y": 4,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 3,
+      "y": 4,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 4,
+      "y": 4,
+      "regionName": "ground_05"
+    }
+  ]
+}

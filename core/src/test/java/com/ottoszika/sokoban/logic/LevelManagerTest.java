@@ -30,21 +30,21 @@ public class LevelManagerTest {
 
         for (int i = 0; i < 8; i++) {
             Block blocksUp = new Block();
-            blocksUp.setPosition(new Position(i, 0));
+            blocksUp.setGridPosition(new Position(i, 0));
             level.add(blocksUp);
 
             Block blocksDown = new Block();
-            blocksDown.setPosition(new Position(i, 5));
+            blocksDown.setGridPosition(new Position(i, 5));
             level.add(blocksDown);
         }
 
         for (int i = 1; i < 5; i++) {
             Block blocksLeft = new Block();
-            blocksLeft.setPosition(new Position(0, i));
+            blocksLeft.setGridPosition(new Position(0, i));
             level.add(blocksLeft);
 
             Block blocksRight = new Block();
-            blocksRight.setPosition(new Position(7, i));
+            blocksRight.setGridPosition(new Position(7, i));
             level.add(blocksRight);
         }
 
@@ -53,10 +53,10 @@ public class LevelManagerTest {
         Crate crateThree = new Crate();
         Crate crateFour = new Crate();
 
-        crateOne.setPosition(new Position(2, 1));
-        crateTwo.setPosition(new Position(6, 1));
-        crateThree.setPosition(new Position(3, 2));
-        crateFour.setPosition(new Position(3, 3));
+        crateOne.setGridPosition(new Position(2, 1));
+        crateTwo.setGridPosition(new Position(6, 1));
+        crateThree.setGridPosition(new Position(3, 2));
+        crateFour.setGridPosition(new Position(3, 3));
 
         level.add(crateOne);
         level.add(crateTwo);
@@ -64,7 +64,7 @@ public class LevelManagerTest {
         level.add(crateFour);
 
         player = new Player();
-        player.setPosition(new Position(3, 1));
+        player.setGridPosition(new Position(3, 1));
 
         level.add(player);
     }

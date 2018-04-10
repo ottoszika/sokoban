@@ -47,7 +47,7 @@ public class LevelManager {
         }
 
         GameEntity nearByEntity = null;
-        Set<GameEntity> nearByEntities = level.getNearbyEntities(entity.getPosition(), direction);
+        Set<GameEntity> nearByEntities = level.getNearbyEntities(entity.getGridPosition(), direction);
 
         // If there were no nearby entities (no obstacle)
         // then the entity can be moved
@@ -97,7 +97,7 @@ public class LevelManager {
         boolean foundNearByEntities = false;
         do {
             // Get nearby entities
-            Set<GameEntity> nearByEntities = level.getNearbyEntities(nearByEntity.getPosition(), direction);
+            Set<GameEntity> nearByEntities = level.getNearbyEntities(nearByEntity.getGridPosition(), direction);
 
             // Exit when there were no nearby entities
             if (nearByEntities == null) {
