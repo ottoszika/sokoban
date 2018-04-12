@@ -1,7 +1,6 @@
 package com.ottoszika.sokoban.loader;
 
 import com.badlogic.gdx.assets.AssetDescriptor;
-import com.badlogic.gdx.assets.AssetLoaderParameters;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.assets.loaders.SynchronousAssetLoader;
@@ -10,14 +9,18 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
+import com.ottoszika.sokoban.contracts.MovementAnimation;
 import com.ottoszika.sokoban.entities.GameEntity;
 import com.ottoszika.sokoban.factories.GameEntityFactory;
 import com.ottoszika.sokoban.loader.definitions.LevelDefinition;
+import com.ottoszika.sokoban.loader.parameters.LevelParameter;
 import com.ottoszika.sokoban.logic.Level;
 import com.ottoszika.sokoban.utils.Assets;
+import com.ottoszika.sokoban.utils.Direction;
+import com.ottoszika.sokoban.utils.MovementAnimationMap;
 import com.ottoszika.sokoban.utils.Position;
 
-public class LevelLoader extends SynchronousAssetLoader<Level, AssetLoaderParameters<Level>> {
+public class LevelLoader extends SynchronousAssetLoader<Level, com.ottoszika.sokoban.loader.parameters.LevelParameter> {
     /**
      * Json object.
      */
@@ -48,7 +51,7 @@ public class LevelLoader extends SynchronousAssetLoader<Level, AssetLoaderParame
      * @return the loaded level.
      */
     @Override
-    public Level load(AssetManager assetManager, String fileName, FileHandle file, AssetLoaderParameters<Level> parameter) {
+    public Level load(AssetManager assetManager, String fileName, FileHandle file, com.ottoszika.sokoban.loader.parameters.LevelParameter parameter) {
         // Read file
         byte[] levelData = file.readBytes();
 
@@ -60,6 +63,9 @@ public class LevelLoader extends SynchronousAssetLoader<Level, AssetLoaderParame
 
         // Get spritesheet atlas
         TextureAtlas textureAtlas = assetManager.get(Assets.SPRITESHEET_ATLAS, TextureAtlas.class);
+
+        // Get movement animation map
+        MovementAnimationMap movementAnimationMap = assetManager.get(Assets.MOVEMENT_ANIMATIONS, MovementAnimationMap.class);
 
         // Getting all entities
         for (com.ottoszika.sokoban.loader.definitions.GameEntityDefinition gameEntityDefinition : levelDefinition.getGameEntityDefinitions()) {
@@ -83,6 +89,15 @@ public class LevelLoader extends SynchronousAssetLoader<Level, AssetLoaderParame
                     gameEntityDefinition.getY() * textureRegion.getRegionHeight()
             );
 
+            // Entities with movement animations will be configured as well
+            if (entity instanceof MovementAnimation) {
+                MovementAnimation movementAnimation = (MovementAnimation) entity;
+                movementAnimation.setMovementAnimationMap(movementAnimationMap);
+
+                // Default animation is NONE
+                movementAnimation.setCurrentMovementAnimation(movementAnimationMap.get(Direction.NONE));
+            }
+
             level.add(entity);
         }
 
@@ -98,12 +113,13 @@ public class LevelLoader extends SynchronousAssetLoader<Level, AssetLoaderParame
      * @return the array of dependencies.
      */
     @Override
-    public Array<AssetDescriptor> getDependencies(String fileName, FileHandle file, AssetLoaderParameters<Level> parameter) {
+    public Array<AssetDescriptor> getDependencies(String fileName, FileHandle file, LevelParameter parameter) {
         Array<AssetDescriptor> assetDescriptors = new Array<AssetDescriptor>();
 
-        // Level loader depends on spritesheet atlas,
-        // so we need to load it first as dependency
+        // Level loader depends on spritesheet atlas and movement animations,
+        // so we need to load them first as dependency
         assetDescriptors.add(new AssetDescriptor<TextureAtlas>(Assets.SPRITESHEET_ATLAS, TextureAtlas.class));
+        assetDescriptors.add(new AssetDescriptor<MovementAnimationMap>(Assets.MOVEMENT_ANIMATIONS, MovementAnimationMap.class));
 
         return assetDescriptors;
     }

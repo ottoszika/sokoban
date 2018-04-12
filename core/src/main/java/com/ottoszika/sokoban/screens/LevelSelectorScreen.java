@@ -4,6 +4,7 @@ import com.ottoszika.sokoban.Sokoban;
 import com.ottoszika.sokoban.logic.Level;
 import com.ottoszika.sokoban.utils.Assets;
 import com.ottoszika.sokoban.utils.LevelDrawer;
+import com.ottoszika.sokoban.utils.MovementAnimationMap;
 
 public class LevelSelectorScreen extends AbstractScreen {
     /**
@@ -37,7 +38,9 @@ public class LevelSelectorScreen extends AbstractScreen {
      */
     private Level loadLevel(int level) {
         String levelFileName = Assets.getLevel(level);
+
         game.getAssetManager().load(levelFileName, Level.class);
+        game.getAssetManager().load(Assets.MOVEMENT_ANIMATIONS, MovementAnimationMap.class);
         game.getAssetManager().finishLoading();
 
         return game.getAssetManager().get(levelFileName);

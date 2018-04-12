@@ -6,37 +6,33 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.ottoszika.sokoban.loader.parameters.LevelParameter;
+import com.ottoszika.sokoban.loader.parameters.MovementAnimationParameter;
 import com.ottoszika.sokoban.utils.Assets;
 import com.ottoszika.sokoban.utils.MovementAnimationMap;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
 
-public class LevelLoaderTest {
+public class MovementAnimationLoaderTest {
 
     @Test
-    public void testLoad() {
+    public void load() {
         // TODO: Test
     }
 
     @Test
-    @SuppressWarnings("unchecked")
-    public void testGetDependencies() {
-        LevelLoader levelLoader = new LevelLoader(mock(FileHandleResolver.class));
+    public void getDependencies() {
+        MovementAnimationLoader movementAnimationLoader = new MovementAnimationLoader(mock(FileHandleResolver.class));
         Array<AssetDescriptor> assetDescriptorArray =
-                levelLoader.getDependencies(
+                movementAnimationLoader.getDependencies(
                         "test.json",
                         mock(FileHandle.class),
-                        mock(LevelParameter.class)
+                        mock(MovementAnimationParameter.class)
                 );
 
-        assertEquals(2, assetDescriptorArray.size);
+        assertEquals(1, assetDescriptorArray.size);
         assertEquals(TextureAtlas.class, assetDescriptorArray.get(0).type);
         assertEquals(Assets.SPRITESHEET_ATLAS, assetDescriptorArray.get(0).fileName);
-
-        assertEquals(2, assetDescriptorArray.size);
-        assertEquals(MovementAnimationMap.class, assetDescriptorArray.get(1).type);
-        assertEquals(Assets.MOVEMENT_ANIMATIONS, assetDescriptorArray.get(1).fileName);
     }
 }

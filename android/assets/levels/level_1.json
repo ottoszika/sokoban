@@ -121,6 +121,12 @@
       "x": 4,
       "y": 4,
       "regionName": "ground_05"
+    },
+    {
+      "type": "player",
+      "x": 2,
+      "y": 2,
+      "regionName": "player_23"
     }
   ]
 }

@@ -5,8 +5,10 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.ottoszika.sokoban.loader.LevelLoader;
+import com.ottoszika.sokoban.loader.MovementAnimationLoader;
 import com.ottoszika.sokoban.logic.Level;
 import com.ottoszika.sokoban.screens.LevelSelectorScreen;
+import com.ottoszika.sokoban.utils.MovementAnimationMap;
 
 public class Sokoban extends Game {
 	/**
@@ -33,8 +35,12 @@ public class Sokoban extends Game {
 		setScreen(new LevelSelectorScreen(this));
 	}
 
+	/**
+	 * Initialize asset loaders.
+	 */
 	private void initAssetLoaders() {
 		assetManager.setLoader(Level.class, new LevelLoader(new InternalFileHandleResolver()));
+		assetManager.setLoader(MovementAnimationMap.class, new MovementAnimationLoader(new InternalFileHandleResolver()));
 	}
 
 	/**

@@ -1,6 +1,8 @@
 package com.ottoszika.sokoban.utils;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.ottoszika.sokoban.contracts.MovementAnimation;
 import com.ottoszika.sokoban.entities.*;
 import com.ottoszika.sokoban.logic.Level;
 
@@ -18,6 +20,11 @@ public class LevelDrawer {
      * Ordered game entity list.
      */
     private List<GameEntity> orderedGameEntities;
+
+    /**
+     * State time.
+     */
+    private float stateTime = 0;
 
     /**
      * Level drawer constructor.
@@ -77,8 +84,18 @@ public class LevelDrawer {
      * @param spriteBatch the sprite batch object.
      */
     public void draw(SpriteBatch spriteBatch) {
+        stateTime += Gdx.graphics.getDeltaTime();
+
         for (GameEntity entity : orderedGameEntities) {
-            entity.draw(spriteBatch);
+            // Entities with movement animations should be rendered by animation frame
+            if (entity instanceof MovementAnimation) {
+                spriteBatch.draw(((MovementAnimation) entity)
+                        .getCurrentMovementAnimation()
+                        .getKeyFrame(stateTime, true), entity.getX(), entity.getY());
+            } else {
+                // Normal entities will be drawn directly
+                entity.draw(spriteBatch);
+            }
         }
     }
 
