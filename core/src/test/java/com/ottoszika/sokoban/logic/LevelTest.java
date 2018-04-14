@@ -35,8 +35,8 @@ public class LevelTest {
     public void testGetNearbyPosition() {
         assertEquals(new Position(1, 1), Level.getNearbyPosition(new Position(2, 1), Direction.LEFT));
         assertEquals(new Position(3, 1), Level.getNearbyPosition(new Position(2, 1), Direction.RIGHT));
-        assertEquals(new Position(2, 0), Level.getNearbyPosition(new Position(2, 1), Direction.UP));
-        assertEquals(new Position(2, 2), Level.getNearbyPosition(new Position(2, 1), Direction.DOWN));
+        assertEquals(new Position(2, 2), Level.getNearbyPosition(new Position(2, 1), Direction.UP));
+        assertEquals(new Position(2, 0), Level.getNearbyPosition(new Position(2, 1), Direction.DOWN));
     }
 
     @Test
@@ -56,8 +56,8 @@ public class LevelTest {
 
         assertEquals(gameEntityLeftSet, level.getNearbyEntities(new Position(2, 1), Direction.LEFT));
         assertEquals(gameEntityRightSet, level.getNearbyEntities(new Position(2, 1), Direction.RIGHT));
-        assertEquals(gameEntityUpSet, level.getNearbyEntities(new Position(2, 1), Direction.UP));
-        assertEquals(gameEntityDownSet, level.getNearbyEntities(new Position(2, 1), Direction.DOWN));
+        assertEquals(gameEntityDownSet, level.getNearbyEntities(new Position(2, 1), Direction.UP));
+        assertEquals(gameEntityUpSet, level.getNearbyEntities(new Position(2, 1), Direction.DOWN));
     }
 
     @Test

@@ -2,6 +2,7 @@ package com.ottoszika.sokoban.logic;
 
 import com.ottoszika.sokoban.contracts.Collidable;
 import com.ottoszika.sokoban.entities.GameEntity;
+import com.ottoszika.sokoban.entities.Player;
 import com.ottoszika.sokoban.utils.Direction;
 import com.ottoszika.sokoban.utils.Position;
 
@@ -28,6 +29,11 @@ public class Level {
      * Level height.
      */
     private int height;
+
+    /**
+     * Player reference.
+     */
+    private Player player;
 
     /**
      * Level constructor.
@@ -64,13 +70,13 @@ public class Level {
                 nearbyPosition.setX(nearbyPosition.getX() - 1);
                 break;
             case UP:
-                nearbyPosition.setY(nearbyPosition.getY() - 1);
+                nearbyPosition.setY(nearbyPosition.getY() + 1);
                 break;
             case RIGHT:
                 nearbyPosition.setX(nearbyPosition.getX() + 1);
                 break;
             case DOWN:
-                nearbyPosition.setY(nearbyPosition.getY() + 1);
+                nearbyPosition.setY(nearbyPosition.getY() - 1);
                 break;
         }
 
@@ -126,6 +132,11 @@ public class Level {
             Set<GameEntity> gameEntitySet = new HashSet<GameEntity>();
             gameEntitySet.add(entity);
             map.put(entity.getGridPosition(), gameEntitySet);
+        }
+
+        // Store player separately for further reference
+        if (entity instanceof Player) {
+            player = (Player) entity;
         }
     }
 
@@ -225,6 +236,24 @@ public class Level {
     }
 
     /**
+     * Get player.
+     *
+     * @return the player.
+     */
+    public Player getPlayer() {
+        return player;
+    }
+
+    /**
+     * Set player.
+     *
+     * @param player the player to be set.
+     */
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    /**
      * Get the string representation of the level.
      *
      * @return the string representation.
@@ -235,7 +264,7 @@ public class Level {
 
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                Set<GameEntity> entities = getEntitiesByPosition(new Position(j ,i));
+                Set<GameEntity> entities = getEntitiesByPosition(new Position(j, i));
 
                 // If there are not entities at the selected position
                 // we well represent that with a space.

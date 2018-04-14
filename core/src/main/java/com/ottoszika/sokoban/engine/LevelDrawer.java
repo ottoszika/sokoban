@@ -1,10 +1,12 @@
-package com.ottoszika.sokoban.utils;
+package com.ottoszika.sokoban.engine;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.ottoszika.sokoban.contracts.MovementAnimation;
 import com.ottoszika.sokoban.entities.*;
 import com.ottoszika.sokoban.logic.Level;
+import com.ottoszika.sokoban.utils.Assets;
+import com.ottoszika.sokoban.utils.Position;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +90,8 @@ public class LevelDrawer {
 
         for (GameEntity entity : orderedGameEntities) {
             // Entities with movement animations should be rendered by animation frame
-            if (entity instanceof MovementAnimation) {
+            // Also we will draw the animation only if the entity was moved
+            if (entity instanceof MovementAnimation && isEntityMoved(entity)) {
                 spriteBatch.draw(((MovementAnimation) entity)
                         .getCurrentMovementAnimation()
                         .getKeyFrame(stateTime, true), entity.getX(), entity.getY());
@@ -96,7 +99,72 @@ public class LevelDrawer {
                 // Normal entities will be drawn directly
                 entity.draw(spriteBatch);
             }
+
+            moveEntity(entity);
         }
+    }
+
+    /**
+     * Check if the entity was moved from the grid position.
+     * This is useful to check if an entity is moving.
+     *
+     * @param entity the entity to check.
+     * @return the moved result.
+     */
+    public boolean isEntityMoved(GameEntity entity) {
+        Position targetPosition = getTargetPosition(entity);
+        return (int) entity.getX() != targetPosition.getX() || (int) entity.getY() != targetPosition.getY();
+    }
+
+    /**
+     * Get game entity position based on position in the grid.
+     * This represents the position where the game entity should be on the screen.
+     *
+     * @param entity the entity which target position needs to be calculated.
+     * @return the target position.
+     */
+    private Position getTargetPosition(GameEntity entity) {
+        return new Position(
+                (int) (entity.getGridPosition().getX() * Assets.LEVEL_GRID_WIDTH
+                        + (Assets.LEVEL_GRID_WIDTH - entity.getWidth()) / 2),
+                (int) (entity.getGridPosition().getY() * Assets.LEVEL_GRID_HEIGHT
+                        + (Assets.LEVEL_GRID_HEIGHT - entity.getHeight()) / 2)
+        );
+    }
+
+    /**
+     * Move entity on screen.
+     *
+     * @param entity the entity to be moved.
+     */
+    private void moveEntity(GameEntity entity) {
+        // Get entity position on screen
+        int startX = (int) entity.getX();
+        int startY = (int) entity.getY();
+
+        // Get where the entity should be
+        Position position = getTargetPosition(entity);
+
+        // Direction deltas
+        int dx = 0;
+        int dy = 0;
+
+        // Calculate horizontal delta
+        if (startX < position.getX()) {
+            dx++;
+        } else if (startX > position.getX()) {
+            dx--;
+        }
+
+        // Calculate vertical delta
+        if (startY < position.getY()) {
+            dy++;
+        } else if (startY > position.getY()) {
+            dy--;
+        }
+
+        // Set the newly obtained position
+        entity.setPosition(startX + dx, startY + dy);
     }
 
     /**

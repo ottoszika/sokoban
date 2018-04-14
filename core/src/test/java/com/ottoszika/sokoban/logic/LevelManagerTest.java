@@ -72,8 +72,8 @@ public class LevelManagerTest {
     @Test
     public void testCanMove() {
         LevelManager levelManager = new LevelManager(level);
-        assertFalse(levelManager.canMove(player, Direction.UP));
         assertFalse(levelManager.canMove(player, Direction.DOWN));
+        assertFalse(levelManager.canMove(player, Direction.UP));
         assertTrue(levelManager.canMove(player, Direction.RIGHT));
         assertTrue(levelManager.canMove(player, Direction.LEFT));
     }
@@ -84,15 +84,15 @@ public class LevelManagerTest {
         assertTrue(levelManager.move(player, Direction.RIGHT));
         assertTrue(levelManager.move(player, Direction.RIGHT));
         assertFalse(levelManager.move(player, Direction.RIGHT));
-        assertTrue(levelManager.move(player, Direction.DOWN));
+        assertTrue(levelManager.move(player, Direction.UP));
         assertTrue(levelManager.move(player, Direction.LEFT));
         assertTrue(levelManager.move(player, Direction.LEFT));
         assertTrue(levelManager.move(player, Direction.LEFT));
         assertFalse(levelManager.move(player, Direction.LEFT));
         assertFalse(levelManager.move(player, Direction.LEFT));
-        assertTrue(levelManager.move(player, Direction.DOWN));
-        assertTrue(levelManager.move(player, Direction.DOWN));
-        assertFalse(levelManager.move(player, Direction.DOWN));
+        assertTrue(levelManager.move(player, Direction.UP));
+        assertTrue(levelManager.move(player, Direction.UP));
+        assertFalse(levelManager.move(player, Direction.UP));
     }
 
     @Test

@@ -92,33 +92,18 @@ public class LevelManager {
             return false;
         }
 
-        // Move the collidable
-        GameEntity nearByEntity = entity;
-        boolean foundNearByEntities = false;
-        do {
-            // Get nearby entities
-            Set<GameEntity> nearByEntities = level.getNearbyEntities(nearByEntity.getGridPosition(), direction);
+        Set<GameEntity> nearByEntities = level.getNearbyEntities(entity.getGridPosition(), direction);
 
-            // Exit when there were no nearby entities
-            if (nearByEntities == null) {
-                break;
-            }
-
-            // Get nearby entity
-            for (GameEntity gameEntity : nearByEntities) {
-                if (gameEntity instanceof Collidable) {
-                    nearByEntity = gameEntity;
-                    foundNearByEntities = true;
+        // Move first nearby entity
+        if (nearByEntities != null && !nearByEntities.isEmpty()) {
+            for (GameEntity nearbyEntity : nearByEntities) {
+                if (nearbyEntity instanceof Collidable) {
+                    level.move(nearbyEntity, direction);
+                    notifyListenersForEntityMoved(nearbyEntity, direction);
                     break;
                 }
             }
-
-            // Move nearby entity
-            if (foundNearByEntities) {
-                level.move(nearByEntity, direction);
-                notifyListenersForEntityMoved(nearByEntity, direction);
-            }
-        } while (!foundNearByEntities);
+        }
 
         // Move the initial entity
         level.move(entity, direction);

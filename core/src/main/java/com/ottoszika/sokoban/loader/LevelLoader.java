@@ -20,7 +20,7 @@ import com.ottoszika.sokoban.utils.Direction;
 import com.ottoszika.sokoban.utils.MovementAnimationMap;
 import com.ottoszika.sokoban.utils.Position;
 
-public class LevelLoader extends SynchronousAssetLoader<Level, com.ottoszika.sokoban.loader.parameters.LevelParameter> {
+public class LevelLoader extends SynchronousAssetLoader<Level, LevelParameter> {
     /**
      * Json object.
      */
@@ -51,7 +51,7 @@ public class LevelLoader extends SynchronousAssetLoader<Level, com.ottoszika.sok
      * @return the loaded level.
      */
     @Override
-    public Level load(AssetManager assetManager, String fileName, FileHandle file, com.ottoszika.sokoban.loader.parameters.LevelParameter parameter) {
+    public Level load(AssetManager assetManager, String fileName, FileHandle file, LevelParameter parameter) {
         // Read file
         byte[] levelData = file.readBytes();
 
@@ -85,8 +85,8 @@ public class LevelLoader extends SynchronousAssetLoader<Level, com.ottoszika.sok
             entity.setRegion(textureRegion);
             entity.setSize(textureRegion.getRegionWidth(), textureRegion.getRegionHeight());
             entity.setPosition(
-                    gameEntityDefinition.getX() * textureRegion.getRegionWidth(),
-                    gameEntityDefinition.getY() * textureRegion.getRegionHeight()
+                    gameEntityDefinition.getX() * Assets.LEVEL_GRID_WIDTH + (Assets.LEVEL_GRID_WIDTH - entity.getWidth()) / 2,
+                    gameEntityDefinition.getY() * Assets.LEVEL_GRID_HEIGHT + (Assets.LEVEL_GRID_HEIGHT - entity.getHeight()) / 2
             );
 
             // Entities with movement animations will be configured as well

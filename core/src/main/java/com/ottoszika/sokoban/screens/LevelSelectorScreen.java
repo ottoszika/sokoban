@@ -3,7 +3,7 @@ package com.ottoszika.sokoban.screens;
 import com.ottoszika.sokoban.Sokoban;
 import com.ottoszika.sokoban.logic.Level;
 import com.ottoszika.sokoban.utils.Assets;
-import com.ottoszika.sokoban.utils.LevelDrawer;
+import com.ottoszika.sokoban.engine.GameEngine;
 import com.ottoszika.sokoban.utils.MovementAnimationMap;
 
 public class LevelSelectorScreen extends AbstractScreen {
@@ -11,6 +11,11 @@ public class LevelSelectorScreen extends AbstractScreen {
      * Game reference.
      */
     private Sokoban game;
+
+    /**
+     * Game engine.
+     */
+    private GameEngine gameEngine;
 
     /**
      * Level selector screen constructor.
@@ -26,8 +31,8 @@ public class LevelSelectorScreen extends AbstractScreen {
         // Loading the first level
         // TODO: Implement the UI for level selection
         Level level = loadLevel(1);
-        LevelDrawer levelDrawer = new LevelDrawer(level);
-        game.setScreen(new PlayScreen(game, levelDrawer));
+        gameEngine = new GameEngine(level);
+        game.setScreen(new PlayScreen(game, gameEngine));
     }
 
     /**
