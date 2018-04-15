@@ -1,9 +1,6 @@
 package com.ottoszika.sokoban.logic;
 
-import com.ottoszika.sokoban.entities.Block;
-import com.ottoszika.sokoban.entities.Crate;
-import com.ottoszika.sokoban.entities.GameEntity;
-import com.ottoszika.sokoban.entities.Player;
+import com.ottoszika.sokoban.entities.*;
 import com.ottoszika.sokoban.utils.Direction;
 import com.ottoszika.sokoban.utils.Position;
 import org.junit.Test;
@@ -155,6 +152,43 @@ public class LevelTest {
         assertEquals(2, level.getMap().size());
         assertEquals(0, level.getMap().get(new Position(2, 1)).size());
         assertEquals(0, level.getMap().get(new Position(2, 3)).size());
+    }
+
+    @Test
+    public void testIsSolved() {
+        Level level = new Level(7, 5);
+
+        assertTrue(level.isSolved());
+
+        Crate crate = new Crate();
+        crate.setGridPosition(new Position(2, 1));
+        level.add(crate);
+        assertTrue(level.isSolved());
+
+        Storage storage = new Storage();
+        storage.setGridPosition(new Position(2, 1));
+        level.add(storage);
+        assertTrue(level.isSolved());
+
+        storage = new Storage();
+        storage.setGridPosition(new Position(2, 3));
+        level.add(storage);
+        assertFalse(level.isSolved());
+
+        storage = new Storage();
+        storage.setGridPosition(new Position(2, 4));
+        level.add(storage);
+        assertFalse(level.isSolved());
+
+        crate = new Crate();
+        crate.setGridPosition(new Position(2, 3));
+        level.add(crate);
+        assertFalse(level.isSolved());
+
+        crate = new Crate();
+        crate.setGridPosition(new Position(2, 4));
+        level.add(crate);
+        assertTrue(level.isSolved());
     }
 
     @Test

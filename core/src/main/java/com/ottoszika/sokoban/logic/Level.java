@@ -1,8 +1,10 @@
 package com.ottoszika.sokoban.logic;
 
 import com.ottoszika.sokoban.contracts.Collidable;
+import com.ottoszika.sokoban.entities.Crate;
 import com.ottoszika.sokoban.entities.GameEntity;
 import com.ottoszika.sokoban.entities.Player;
+import com.ottoszika.sokoban.entities.Storage;
 import com.ottoszika.sokoban.utils.Direction;
 import com.ottoszika.sokoban.utils.Position;
 
@@ -179,6 +181,35 @@ public class Level {
      */
     public boolean move(GameEntity entity, Direction direction) {
         return move(entity, getNearbyPosition(entity.getGridPosition(), direction));
+    }
+
+    /**
+     * Check if the level is solved.
+     *
+     * @return the solved result.
+     */
+    public boolean isSolved() {
+        // Check if there is an uncovered storage
+        for (Set<GameEntity> entities : map.values()) {
+            boolean hasCrates = false;
+            boolean hasStorage = false;
+
+            for (GameEntity entity : entities) {
+                if (entity instanceof Crate) {
+                    hasCrates = true;
+                }
+
+                if (entity instanceof Storage) {
+                    hasStorage = true;
+                }
+            }
+
+            if (hasStorage && !hasCrates) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
