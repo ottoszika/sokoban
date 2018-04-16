@@ -8,6 +8,8 @@ before_install:
   - yes | sdkmanager "platforms;android-27"
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+before_deploy:
+  - ./gradlew html:dist
 deploy:
   provider: pages
   skip-cleanup: true
