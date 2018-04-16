@@ -1,0 +1,7 @@
+{
+  "LEFT": ["player_14", "player_15", "player_16"],
+  "UP": ["player_02", "player_03", "player_04"],
+  "RIGHT": ["player_11", "player_12", "player_13"],
+  "DOWN": ["player_01", "player_23", "player_24"],
+  "NONE": ["player_23"]
+}

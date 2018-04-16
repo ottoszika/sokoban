@@ -1,0 +1,17 @@
+d:assets:0:application/unknown
+d:spritesheets:0:application/unknown
+i:spritesheets/sokoban_spritesheet.png:87291:image/png
+t:spritesheets/sokoban_spritesheet@2.atlas:10409:application/unknown
+i:spritesheets/sokoban_spritesheet@2.png:189743:image/png
+t:spritesheets/sokoban_spritesheet.atlas:10052:application/unknown
+t:spritesheets/movement_animations.json:230:application/unknown
+d:levels:0:application/unknown
+t:levels/level_1.json:6139:application/unknown
+t:com/badlogic/gdx/graphics/g3d/particles/particles.fragment.glsl:859:application/unknown
+t:com/badlogic/gdx/graphics/g3d/particles/particles.vertex.glsl:2996:application/unknown
+t:com/badlogic/gdx/graphics/g3d/shaders/default.fragment.glsl:5350:application/unknown
+t:com/badlogic/gdx/graphics/g3d/shaders/default.vertex.glsl:9159:application/unknown
+t:com/badlogic/gdx/graphics/g3d/shaders/depth.fragment.glsl:904:application/unknown
+t:com/badlogic/gdx/graphics/g3d/shaders/depth.vertex.glsl:3056:application/unknown
+t:com/badlogic/gdx/utils/arial-15.fnt:21743:application/unknown
+i:com/badlogic/gdx/utils/arial-15.png:21814:image/png
