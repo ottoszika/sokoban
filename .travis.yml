@@ -8,3 +8,11 @@ before_install:
   - yes | sdkmanager "platforms;android-27"
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  local-dir: ./html/build/dist
+  on:
+    branch: master
