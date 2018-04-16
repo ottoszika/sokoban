@@ -27,6 +27,7 @@ public class GeneralInputMultiplexer extends InputMultiplexer {
     public void registerProcessors() {
         switch (Gdx.app.getType()) {
             case Desktop:
+            case WebGL:
                 addProcessor(new KeyboardInputProcessor(gameEngine));
                 break;
             case Android:

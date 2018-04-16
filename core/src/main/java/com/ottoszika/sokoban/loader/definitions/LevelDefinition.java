@@ -1,6 +1,6 @@
 package com.ottoszika.sokoban.loader.definitions;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class LevelDefinition {
     /**
@@ -16,7 +16,7 @@ public class LevelDefinition {
     /**
      * List of all game entities.
      */
-    private List<GameEntityDefinition> gameEntityDefinitions;
+    private ArrayList<GameEntityDefinition> gameEntityDefinitions;
 
     /**
      * Get width.
@@ -59,7 +59,7 @@ public class LevelDefinition {
      *
      * @return the list of game entity definitions.
      */
-    public List<GameEntityDefinition> getGameEntityDefinitions() {
+    public ArrayList<GameEntityDefinition> getGameEntityDefinitions() {
         return gameEntityDefinitions;
     }
 
@@ -68,7 +68,7 @@ public class LevelDefinition {
      *
      * @param gameEntityDefinitions the list of game entity definitions to be set.
      */
-    public void setGameEntityDefinitions(List<GameEntityDefinition> gameEntityDefinitions) {
+    public void setGameEntityDefinitions(ArrayList<GameEntityDefinition> gameEntityDefinitions) {
         this.gameEntityDefinitions = gameEntityDefinitions;
     }
 }
