@@ -94,9 +94,4 @@ public class LevelManagerTest {
         assertTrue(levelManager.move(player, Direction.UP));
         assertFalse(levelManager.move(player, Direction.UP));
     }
-
-    @Test
-    public void testToString() {
-        System.out.println(level.toString());
-    }
 }

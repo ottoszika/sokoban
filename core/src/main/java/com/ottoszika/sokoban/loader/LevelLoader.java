@@ -5,6 +5,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.assets.loaders.SynchronousAssetLoader;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
@@ -88,6 +89,7 @@ public class LevelLoader extends SynchronousAssetLoader<Level, LevelParameter> {
                     gameEntityDefinition.getX() * Assets.LEVEL_GRID_WIDTH + (Assets.LEVEL_GRID_WIDTH - entity.getWidth()) / 2,
                     gameEntityDefinition.getY() * Assets.LEVEL_GRID_HEIGHT + (Assets.LEVEL_GRID_HEIGHT - entity.getHeight()) / 2
             );
+            entity.getTexture().setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
 
             // Entities with movement animations will be configured as well
             if (entity instanceof MovementAnimation) {

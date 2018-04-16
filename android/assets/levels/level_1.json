@@ -1,6 +1,6 @@
 {
-  "width": 5,
-  "height": 5,
+  "width": 6,
+  "height": 7,
   "gameEntityDefinitions": [
     {
       "type": "block",
@@ -28,8 +28,98 @@
     },
     {
       "type": "block",
+      "x": 0,
+      "y": 1,
+      "regionName": "block_04"
+    },
+    {
+      "type": "ground",
+      "x": 1,
+      "y": 1,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 2,
+      "y": 1,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "block",
+      "x": 3,
+      "y": 1,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
+      "x": 0,
+      "y": 2,
+      "regionName": "block_04"
+    },
+    {
+      "type": "ground",
+      "x": 1,
+      "y": 2,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 2,
+      "y": 2,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "block",
+      "x": 3,
+      "y": 2,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
       "x": 4,
-      "y": 0,
+      "y": 2,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
+      "x": 5,
+      "y": 2,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
+      "x": 0,
+      "y": 3,
+      "regionName": "block_04"
+    },
+    {
+      "type": "ground",
+      "x": 1,
+      "y": 3,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 2,
+      "y": 3,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 3,
+      "y": 3,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 4,
+      "y": 3,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "block",
+      "x": 5,
+      "y": 3,
       "regionName": "block_04"
     },
     {
@@ -39,27 +129,93 @@
       "regionName": "block_04"
     },
     {
-      "type": "block",
+      "type": "ground",
       "x": 1,
+      "y": 4,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 2,
+      "y": 4,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 3,
+      "y": 4,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 4,
+      "y": 4,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "block",
+      "x": 5,
       "y": 4,
       "regionName": "block_04"
     },
     {
       "type": "block",
-      "x": 2,
-      "y": 4,
+      "x": 0,
+      "y": 5,
       "regionName": "block_04"
+    },
+    {
+      "type": "ground",
+      "x": 1,
+      "y": 5,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 2,
+      "y": 5,
+      "regionName": "ground_05"
     },
     {
       "type": "block",
       "x": 3,
-      "y": 4,
+      "y": 5,
       "regionName": "block_04"
     },
     {
       "type": "block",
       "x": 4,
-      "y": 4,
+      "y": 5,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
+      "x": 5,
+      "y": 5,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
+      "x": 0,
+      "y": 6,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
+      "x": 1,
+      "y": 6,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
+      "x": 2,
+      "y": 6,
+      "regionName": "block_04"
+    },
+    {
+      "type": "block",
+      "x": 3,
+      "y": 6,
       "regionName": "block_04"
     },
     {
@@ -88,8 +244,50 @@
     },
     {
       "type": "ground",
+      "x": 0,
+      "y": 1,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 3,
+      "y": 1,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 0,
+      "y": 2,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 3,
+      "y": 2,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
       "x": 4,
-      "y": 0,
+      "y": 2,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 5,
+      "y": 2,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 0,
+      "y": 3,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 5,
+      "y": 3,
       "regionName": "ground_05"
     },
     {
@@ -100,57 +298,87 @@
     },
     {
       "type": "ground",
-      "x": 1,
+      "x": 5,
       "y": 4,
       "regionName": "ground_05"
     },
     {
       "type": "ground",
-      "x": 2,
-      "y": 4,
+      "x": 0,
+      "y": 5,
       "regionName": "ground_05"
     },
     {
       "type": "ground",
       "x": 3,
-      "y": 4,
+      "y": 5,
       "regionName": "ground_05"
     },
     {
       "type": "ground",
       "x": 4,
-      "y": 4,
+      "y": 5,
       "regionName": "ground_05"
     },
     {
-      "type": "player",
-      "x": 2,
-      "y": 2,
-      "regionName": "player_23"
+      "type": "ground",
+      "x": 5,
+      "y": 5,
+      "regionName": "ground_05"
     },
     {
       "type": "ground",
-      "x": 2,
-      "y": 2,
+      "x": 0,
+      "y": 6,
       "regionName": "ground_05"
     },
     {
       "type": "ground",
       "x": 1,
-      "y": 2,
+      "y": 6,
+      "regionName": "ground_05"
+    },
+    {
+      "type": "ground",
+      "x": 2,
+      "y": 6,
       "regionName": "ground_05"
     },
     {
       "type": "ground",
       "x": 3,
-      "y": 2,
+      "y": 6,
       "regionName": "ground_05"
+    },
+    {
+      "type": "storage",
+      "x": 2,
+      "y": 1,
+      "regionName": "environment_08"
+    },
+    {
+      "type": "storage",
+      "x": 1,
+      "y": 3,
+      "regionName": "environment_08"
+    },
+    {
+      "type": "crate",
+      "x": 3,
+      "y": 4,
+      "regionName": "crate_01"
     },
     {
       "type": "crate",
       "x": 1,
       "y": 2,
-      "regionName": "crate_04"
+      "regionName": "crate_01"
+    },
+    {
+      "type": "player",
+      "x": 3,
+      "y": 3,
+      "regionName": "player_23"
     }
   ]
 }
