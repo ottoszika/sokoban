@@ -8,4 +8,7 @@
 	<entry-point class='com.ottoszika.sokoban.client.HtmlLauncher' />
 	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
 	<set-configuration-property name="gdx.assetpath" value="../android/assets" />
+	<extend-configuration-property name="gdx.reflect.include" value="com.ottoszika.sokoban.loader.definitions.GameEntityDefinition" />
+	<extend-configuration-property name="gdx.reflect.include" value="com.ottoszika.sokoban.loader.definitions.LevelDefinition" />
+	<extend-configuration-property name="gdx.reflect.include" value="com.ottoszika.sokoban.loader.definitions.MovementAnimationDefinition" />
 </module>
