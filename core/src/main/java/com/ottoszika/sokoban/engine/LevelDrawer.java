@@ -138,6 +138,9 @@ public class LevelDrawer {
      * @param entity the entity to be moved.
      */
     private void moveEntity(GameEntity entity) {
+        // Default delta
+        final int dt = 2;
+
         // Get entity position on screen
         int startX = (int) entity.getX();
         int startY = (int) entity.getY();
@@ -151,16 +154,16 @@ public class LevelDrawer {
 
         // Calculate horizontal delta
         if (startX < position.getX()) {
-            dx++;
+            dx += dt;
         } else if (startX > position.getX()) {
-            dx--;
+            dx -= dt;
         }
 
         // Calculate vertical delta
         if (startY < position.getY()) {
-            dy++;
+            dy += dt;
         } else if (startY > position.getY()) {
-            dy--;
+            dy -= dt;
         }
 
         // Set the newly obtained position
